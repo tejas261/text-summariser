@@ -1,11 +1,11 @@
 ```markdown
-# AI Text Summarizer
+**AI Text Summarizer**
 
-## Project Overview
+##Project Overview
 
 AI Text Summarizer is a Chrome extension that leverages AI to summarize webpage content. It allows users to either select specific text or summarize an entire webpage, providing a quick way to digest information without having to read everything in detail.
 
-## Installation
+##Installation
 
 To install the AI Text Summarizer Chrome extension, follow these steps:
 
@@ -15,7 +15,7 @@ To install the AI Text Summarizer Chrome extension, follow these steps:
 4. Click on "Load unpacked" and select the directory where you downloaded the project files.
 5. The extension should now be installed and visible in your extensions list.
 
-## Usage
+##Usage
 
 1. Click on the AI Text Summarizer icon in the Chrome toolbar.
 2. Choose to summarize either the selected text or the full page by clicking the corresponding button.
@@ -23,36 +23,25 @@ To install the AI Text Summarizer Chrome extension, follow these steps:
 4. You can copy the summary to your clipboard by clicking the "Copy Summary" button.
 5. Use the "Toggle Dark Mode" button to switch between light and dark themes.
 
-## Features
+##Features
 
 - Summarize selected text or entire webpages.
 - Dark mode support for better readability in low-light environments.
 - Loading spinner to indicate processing.
 - Copy summary functionality with user feedback.
 
-## Dependencies
+##Dependencies
 
 This project does not have additional dependencies specified in a `package.json` file, but it uses the following external libraries:
 
 - Tailwind CSS for styling (included via CDN).
 
-## Project Structure
+##Project Structure
 
 The project files are organized as follows:
-```
 
-.
-├── background.js # Service worker for background tasks
-├── content.js # Script for handling content and messaging
-├── manifest.json # Metadata for the Chrome extension
-├── popup.html # HTML for the extension's popup interface
-├── popup.js # Logic for the popup functionality
-├── styles.css # Styles for the popup UI
-└── icon.png # Icon for the extension
 
-```
-
-### File Descriptions
+###File Descriptions
 - **manifest.json**: Contains metadata for the Chrome extension, including permissions and background scripts.
 - **popup.html**: The user interface displayed when the extension icon is clicked.
 - **styles.css**: CSS styles for the popup interface, including styles for dark mode.
@@ -60,9 +49,7 @@ The project files are organized as follows:
 - **background.js**: Manages background processes, including storing user preferences.
 - **content.js**: Listens for messages and retrieves selected text from the current page.
 
-## Contributing
+##Contributing
 If you would like to contribute to this project, please fork the repository and submit a pull request. Features, bug fixes, and improvements are always welcome!
 
-## License
-This project is open source and available under the MIT License. See the [LICENSE](LICENSE) file for more information.
 ```
