@@ -8,10 +8,6 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         },
         body: JSON.stringify({
           text,
-          parameters: {
-            max_length: 500,
-            min_length: 30,
-          },
         }),
       });
 

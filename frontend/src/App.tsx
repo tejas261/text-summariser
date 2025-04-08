@@ -18,10 +18,6 @@ function App() {
         },
         body: JSON.stringify({
           text,
-          parameters: {
-            max_length: 500,
-            min_length: 30,
-          },
         }),
       });
 
