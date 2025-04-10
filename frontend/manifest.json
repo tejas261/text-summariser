@@ -3,7 +3,7 @@
   "name": "AI Text Summarizer",
   "version": "1.0",
   "description": "Summarize webpage content or selected text using AI",
-  "permissions": ["activeTab", "scripting", "contextMenus"],
+  "permissions": ["scripting", "tabs", "activeTab"],
   "action": {
     "default_popup": "index.html"
   },
@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["readability.js"]
     }
   ]
 }

@@ -22,7 +22,8 @@ function App() {
       });
 
       const result = await response.json();
-      setSummary(result[0].summary_text);
+      console.log(result);
+      setSummary(result);
     } catch (error) {
       console.error("Error:", error);
       setSummary("Error generating summary. Please try again.");
@@ -35,18 +36,24 @@ function App() {
       active: true,
       currentWindow: true,
     });
-    if (!tab.id) return;
 
-    const result = await chrome.scripting.executeScript({
+    if (!tab?.id) return;
+
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ["readability.js"], // inject Readability first
+    });
+
+    const [{ result }] = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       func: () => {
-        const article = document.querySelector("article");
-        if (article) return article.textContent;
-        return document.body.innerText;
+        // @ts-ignore
+        const article = new Readability(document.cloneNode(true)).parse();
+        return article?.textContent || document.body.innerText;
       },
     });
 
-    setText(result[0].result || "");
+    setText(result || "");
   };
 
   return (

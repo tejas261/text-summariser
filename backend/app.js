@@ -1,5 +1,4 @@
 import express from "express";
-import fetch from "node-fetch";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -11,28 +10,32 @@ app.use(express.json());
 
 app.post("/summarize", async (req, res) => {
   const { text } = req.body;
-
   const response = await fetch(
-    "https://api-inference.huggingface.co/models/csebuetnlp/mT5_multilingual_XLSum",
+    "https://openrouter.ai/api/v1/chat/completions",
     {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.HUGGING_FACE_TOKEN}`,
       },
       body: JSON.stringify({
-        inputs: `summarize this text in pointers if possible in the same language as you receive it: ${text}`,
-        parameters: {
-          max_length: 500,
-          min_length: 40,
-          do_sample: false,
-        },
+        model: "mistralai/mixtral-8x7b-instruct",
+        messages: [
+          {
+            role: "system",
+            content: "You are a helpful summarizer.",
+          },
+          {
+            role: "user",
+            content: `Summarize the following article preserving key events, names, and causes in not more than 20 lines:\n\n${text}`,
+          },
+        ],
       }),
     }
   );
 
   const data = await response.json();
-  res.json(data);
+  res.json(data.choices[0].message.content);
 });
 
 const PORT = process.env.PORT || 4000;

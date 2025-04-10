@@ -12,7 +12,8 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
       });
 
       const result = await response.json();
-      const summary = result[0].summary_text;
+      console.log(result);
+      const summary = result;
 
       // Create and show the summary popup
       const popup = document.createElement("div");
